@@ -27,6 +27,7 @@ function ChadRoom(props) {//props
                     id : doc.id})
             })
             setMessages(messages)
+            console.log(messages)
         })
         return()=>{
             unsubscribe()
