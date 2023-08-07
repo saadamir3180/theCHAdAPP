@@ -34,22 +34,21 @@ function ChadRoom(props) {//props
         return()=>{
             unsubscribe()
         }
-    }, [dataBase])
+    }, [])
 
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
           
-          const temp = newMessage;
-          setNewMessage("")
                 await addDoc(messageRef, {
-                    text: temp,
+                    text: newMessage,
                     createdAt: serverTimestamp(),
                     user: auth.currentUser.uid,
                     userImage: auth.currentUser.photoURL,
                 })
-                dummy.current.scrollIntoView({behaviour: 'smooth'})
+            
+          setNewMessage("")
       } catch (error) {
         console.error("Error adding document: ", error);
       }
