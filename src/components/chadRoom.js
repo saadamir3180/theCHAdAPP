@@ -17,7 +17,7 @@ function ChadRoom(props) {//props
             console.log("useEffect")
         const queryMessage = query(
             messageRef,
-            orderBy("createdAt", "asc"),
+            orderBy("createdAt", "desc"),
             // where("room", "==", room),
             limit(10),
           );  //conditional data
@@ -59,7 +59,7 @@ function ChadRoom(props) {//props
     <div className='chatContainer'>
       <h2 className='roomName'>{room}</h2>
       <div className='messagesContainer' >
-          {messages.map((message) => (
+          {messages && messages.slice().reverse().map((message) => (
             <div className={auth.currentUser.uid === message.user ? 'userMessage' : 'message'} key={messages.indexOf(message)}>
               <img className='userImg' src={message.userImage} alt={message.user}/>
               <p className='userText'>{message.text}</p>
