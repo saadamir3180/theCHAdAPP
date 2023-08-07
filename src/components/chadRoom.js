@@ -17,7 +17,7 @@ function ChadRoom(props) {//props
             console.log("useEffect")
         const queryMessage = query(
             messageRef,
-            orderBy("createdAt", "desc"),
+            orderBy("createdAt", "asc"),
             // where("room", "==", room),
             limit(10),
           );  //conditional data
