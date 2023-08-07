@@ -32,7 +32,7 @@ function ChadRoom(props) {//props
         return()=>{
             unsubscribe()
         }
-    }, [])
+    }, [dataBase])
 
 
     const handleSubmit = async (e)=>{
