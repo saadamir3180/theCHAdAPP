@@ -13,6 +13,8 @@ function ChadRoom(props) {//props
     const messageRef = collection(dataBase, room)
     const roomRef = collection(dataBase, 'room')//which data to get
     useEffect(()=>{
+        
+            console.log("useEffect")
         const queryMessage = query(
             messageRef,
             orderBy("createdAt", "desc"),
@@ -53,18 +55,16 @@ function ChadRoom(props) {//props
       }
     }
 
-    const dummy = useRef();
 
   return (<div>
     <div className='chatContainer'>
       <h2 className='roomName'>{room}</h2>
       <div className='messagesContainer' >
-          {messages && messages.slice().reverse().map((message) => (
+          {messages.map((message) => (
             <div className={auth.currentUser.uid === message.user ? 'userMessage' : 'message'} key={messages.indexOf(message)}>
               <img className='userImg' src={message.userImage} alt={message.user}/>
               <p className='userText'>{message.text}</p>
             </div>))}
-            <div ref={dummy}></div>
       </div>
     <div className="container">
     <form onSubmit={handleSubmit} className="webflow-style-input">
