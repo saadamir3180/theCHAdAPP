@@ -34,6 +34,7 @@ body{
 }
 .mainHeader{
   height:var(--heightHeader);
+  min-height: var(--heightHeader);
   background-color:var(--orange);
   display: flex;
   justify-content:space-around;
@@ -106,20 +107,29 @@ body{
   100%{transform:rotate(360deg) scale(0.95);}
 }
 .home{
+  display: flex;
+  flex-direction: column;
   min-height:calc(100vh - var(--heightHeader));
   background-color: var(--lightBlack);
   border-radius: 2rem 2rem 2rem 0;
   background-image:var(--background);
-  animation: appear 0.5s ease;
+  /* animation: appear 0.5s ease; */
 
+}
+@keyframes fadeInOut {
+  0%{opacity:0;}
+  100%{opacity:100;}
+  
 }
 .home h1{
   font-size: 3.5rem;
   margin-top: 3rem;
+  animation: fadeInOut 0.1s ease;
 }
 .home p{
   font-size: 1.18rem;
   opacity: 85%;
+  animation: fadeInOut 0.2s ease;
 }
 .homeInfo{
   display:flex;
@@ -129,17 +139,9 @@ body{
   gap: 1.5rem;
   margin-left:10vw;
 }
-.homeVisuals img{
-  width:14rem;
-  border-radius: 0.7rem;  
-  border-radius: 2rem 2rem 2rem 0;
-  height:min-content;
-  margin:.8rem;
-  box-shadow: 1px 1px 6px var(--orange);
-  transition: box-shadow 0.4s ease;
-}
-.homeVisuals img:hover{
-  box-shadow: 1px 1px 8px var(--yellow);
+.homeSvg{
+  animation: fadeInOut .5s ease-in-out;
+  align-self: flex-end;
 }
 .homeVisuals{
   display: flex;
@@ -148,14 +150,8 @@ body{
   width: fit-content;
   justify-content:first baseline;
   margin-inline: auto 10vw;
-  transform: translate(0,-0rem);
-  height: fit-content;
+  height: fit-content;  
   margin-top: -13rem;
-  animation: appear 2s ease-in;
-}
-.homeVisaualsStack{
-  display:flex;
-  flex-direction:column;
 }
 .container {
   display: flex;
@@ -316,11 +312,20 @@ body{
   html{
     font-size: 85%;
   }
+  .homeSvg{
+    scale: 70%;
+    align-self: center;
+  }
 }
 @media(max-width:425px) {
   .homeVisuals{
     flex-direction: column;
     margin-top: 2rem;
     margin-inline: auto;
+  }
+}
+@media(max-width:390px) {
+  .homeSvg{
+    scale: 40%;
   }
 }
